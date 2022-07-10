@@ -2,27 +2,40 @@ public class LeetcodeTask {
 
 
     public static void main(String[] args) {
-        pivotIndex(new int[]{-1,-1,0,1,1,0});
-    }
-    public static int pivotIndex(int[] nums) {
-        int length=nums.length;
-        int[] sum = new int[length];
-        int[] reverseSum = new int[length];
+        System.out.println(isIsomorphic("title","paper"));
 
-        for (int i = 1; i < length; i++) {
-            sum[i]=sum[i-1]+nums[i-1];
-        }
-        for (int i = length-2; i >= 0; i--) {
-            reverseSum[i]= reverseSum[i+1]+nums[i+1];
-        }
-        for (int i = 0; i < length; i++) {
-            if (sum[i]==reverseSum[i]) {
-                System.out.println(i);
-                return i;
+    }
+    public static boolean isIsomorphic(String s, String t) {
+
+        char[] sToChar=s.toCharArray();
+        char[] tToChar=t.toCharArray();
+        int[] sChangeState=new int[sToChar.length];
+        int[] tChangeState=new int[sToChar.length];
+        int sLetterNumber=1;
+        int tLetterNumber=1;
+
+        for (int i = 0; i < sToChar.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (sToChar[i]==sToChar[j]) {
+                    sChangeState[i] = sChangeState[j];
+                    break;
+                } else sChangeState[i]=sLetterNumber++;
+            }
+            for (int j = 0; j < i; j++) {
+                if (tToChar[i]==tToChar[j]) {
+                    tChangeState[i] = tChangeState[j];
+                    break;
+                } else tChangeState[i]=tLetterNumber++;
             }
         }
-        return -1;
+
+        for (int i = 0; i < sToChar.length; i++) {
+            if (sChangeState[i]!=tChangeState[i]) return false;
+        }
+        return true;
     }
+
+
 
 }
 
