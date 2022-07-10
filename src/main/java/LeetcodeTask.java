@@ -2,40 +2,19 @@ public class LeetcodeTask {
 
 
     public static void main(String[] args) {
-        System.out.println(isIsomorphic("title","paper"));
-
+        System.out.println(isSubsequence("abc","aaabbbccc"));
     }
-    public static boolean isIsomorphic(String s, String t) {
-
-        char[] sToChar=s.toCharArray();
-        char[] tToChar=t.toCharArray();
-        int[] sChangeState=new int[sToChar.length];
-        int[] tChangeState=new int[sToChar.length];
-        int sLetterNumber=1;
-        int tLetterNumber=1;
-
-        for (int i = 0; i < sToChar.length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (sToChar[i]==sToChar[j]) {
-                    sChangeState[i] = sChangeState[j];
-                    break;
-                } else sChangeState[i]=sLetterNumber++;
-            }
-            for (int j = 0; j < i; j++) {
-                if (tToChar[i]==tToChar[j]) {
-                    tChangeState[i] = tChangeState[j];
-                    break;
-                } else tChangeState[i]=tLetterNumber++;
+    public static boolean isSubsequence(String s, String t) {
+        int pos=0;
+        int winCondition=0;
+        for (int i = 0; i < t.length(); i++) {
+            if (t.charAt(i)==s.charAt(pos)){
+                winCondition++;
+                pos++;
+                if (winCondition==s.length()) return true;
             }
         }
-
-        for (int i = 0; i < sToChar.length; i++) {
-            if (sChangeState[i]!=tChangeState[i]) return false;
-        }
-        return true;
+        return false;
     }
-
-
-
 }
 
