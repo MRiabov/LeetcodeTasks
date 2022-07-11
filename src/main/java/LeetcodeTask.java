@@ -14,8 +14,9 @@ public class LeetcodeTask {
     }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode currentNode=new ListNode();
-        ListNode output = currentNode;
+        ListNode output = new ListNode(0);
+        ListNode currentNode = new ListNode();
+        output = currentNode;
 
         while (list1!=null||list2!=null){
             if (list1==null) {
@@ -24,12 +25,12 @@ public class LeetcodeTask {
             } else if (list2==null){
                 currentNode.next=list1;
                 list1=list1.next;
-            } else if (list1.val>= list2.val){
+            } else if (list1.val > list2.val){
                 currentNode.next=list2;
-                list1=list1.next;
+                list2=list2.next;
             } else {
                 currentNode.next=list1;
-                list2=list2.next;
+                list1=list1.next;
             }
             currentNode=currentNode.next;
         }
