@@ -4,38 +4,18 @@ public class LeetcodeTask {
 
 
     public static void main(String[] args) {
-        ListNode output=mergeTwoLists(new ListNode(1,new ListNode(2,new ListNode(4,null))),
-                new ListNode(1,new ListNode(3,new ListNode(4,null))));
-        while (output!=null) {
-            System.out.println(output.val);
-            output=output.next;
-        }
-
+        middleNode(new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5))))));
     }
 
-    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode output = new ListNode(0);
-        ListNode currentNode = new ListNode();
-        output = currentNode;
-
-        while (list1!=null||list2!=null){
-            if (list1==null) {
-                currentNode.next = list2;
-                list2=list2.next;
-            } else if (list2==null){
-                currentNode.next=list1;
-                list1=list1.next;
-            } else if (list1.val > list2.val){
-                currentNode.next=list2;
-                list2=list2.next;
-            } else {
-                currentNode.next=list1;
-                list1=list1.next;
-            }
-            currentNode=currentNode.next;
+    public static ListNode middleNode(ListNode head) {
+        boolean even=false;
+        ListNode output=head;
+        for (ListNode currentNode = head; currentNode!=null;currentNode=currentNode.next) {
+            if (even) output=output.next;
+            even=!even;
         }
-        return output.next;
-}
+        return output;
+    }
 }
 
 class ListNode {
