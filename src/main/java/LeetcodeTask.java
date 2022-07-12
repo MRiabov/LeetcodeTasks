@@ -1,20 +1,24 @@
-
+import java.util.HashMap;
 
 public class LeetcodeTask {
 
 
     public static void main(String[] args) {
-        middleNode(new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5))))));
+        middleNode(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))));
     }
 
-    public static ListNode middleNode(ListNode head) {
-        boolean even=false;
-        ListNode output=head;
-        for (ListNode currentNode = head; currentNode!=null;currentNode=currentNode.next) {
-            if (even) output=output.next;
-            even=!even;
+    public ListNode detectCycle(ListNode head) {
+        if(head == null || head.next == null) {
+            return null;
         }
-        return output;
+        if(head.next.val == Integer.MAX_VALUE) {
+            return head.next;
+        }
+        int temp = head.val;
+        head.val = Integer.MAX_VALUE;
+        var result = detectCycle(head.next);
+        head.val = temp;
+        return result;
     }
 }
 
