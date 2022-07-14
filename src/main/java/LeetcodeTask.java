@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class LeetcodeTask {
@@ -8,11 +9,25 @@ public class LeetcodeTask {
 
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>()
-        if (root!=null) result.add(new ArrayList<>(root.val));
-        for (int i = 0; i < ; i++) {
-
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) return res;
+        int level = 0;
+        Queue<Pair<TreeNode,Integer>> q = new LinkedList<>();
+        q.offer(new Pair(root,level));
+        List<Integer> temp = new ArrayList<>();
+        while(!q.isEmpty()){
+            while(q.peek() != null && q.peek().getValue() == level){
+                TreeNode t = q.poll().getKey();
+                temp.add(t.val);
+                if(t.left != null) q.offer(new Pair(t.left, level+1));
+                if(t.right != null) q.offer(new Pair(t.right, level+1));
+            }
+            res.add(temp);
+            temp = new ArrayList<>();
+            level++;
         }
+        return res;
+    }
     }
 }
 
