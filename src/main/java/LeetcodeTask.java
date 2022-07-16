@@ -1,35 +1,33 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.*;
+import java.util.Random;
 public class LeetcodeTask {
-    private static final int badVersion=(int)(Math.random()*100);
-    private static int callsToAPI=0;
+
     public static void main(String[] args) {
-        System.out.println(firstBadVersion(100));
+
+    }
+    public boolean isValidBST(TreeNode root) {
+        return validBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
     }
 
-    private static boolean isBadVersion(int n){
-        System.out.println("Calls to API: "+ ++callsToAPI);
-        return n >= badVersion;
+    private boolean validBST(TreeNode root,int min,int max){
+        if (root == null) return true;
+        if (root.val<=min||root.val>=max) return false;
+        return validBST(root,min,root.val)&&validBST(root,root.val,max);
     }
-    public static int firstBadVersion(int n) {
-        int highestGood=0;
-        int lowestBad=n;
-        while (!(isBadVersion(lowestBad)&&!isBadVersion(lowestBad-1))){
-            int mid=highestGood+(lowestBad-highestGood)/2;
-            if (!isBadVersion(mid)) {
-                highestGood=mid;
-                mid=highestGood+(lowestBad-highestGood)/2;
-                while (!isBadVersion(mid)) {
-                    highestGood=mid;
-                    mid=highestGood+(lowestBad-highestGood)/2;
-                }
-            }
-            lowestBad=mid;
-        }
-        return lowestBad;
-    }
+    
+    
 }
 
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
 
