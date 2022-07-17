@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class LeetcodeTask {
 
     public static void main(String[] args) {
@@ -9,20 +7,19 @@ public class LeetcodeTask {
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
         LeetcodeTask.image = image;
         recursionFill(sr, sc, color, image[sr][sc]);
-        System.out.println(Arrays.deepToString(image));
         return LeetcodeTask.image;
     }
 
     static int[][] image;
 
-    private static boolean recursionFill(int posX, int posY, int color, int startColor) {
-        if (posX != 3 || posX != -1 || posY != 3 || posY != -1 || image[posX][posY] == startColor) {
+    private static void recursionFill(int posX, int posY, int color, int startColor) {
+        if (image[posX][posY]!=color&&image[posX][posY] == startColor) {
             image[posX][posY] = color;
-            return recursionFill(posX+1, posY, color, startColor)&&
-                    recursionFill(posX-1, posY, color, startColor)&&
-                    recursionFill(posX, posY+1, color, startColor)&&
-                    recursionFill(posX, posY-1, color, startColor);
-        } else return true;
+            if (posX+1!=image.length) recursionFill(posX+1, posY, color, startColor);
+            if (posX-1!=-1) recursionFill(posX-1, posY, color, startColor);
+            if (posY+1!=image[0].length) recursionFill(posX, posY+1, color, startColor);
+            if (posY-1!=-1) recursionFill(posX, posY-1, color, startColor);
+        }
     }
 }
 
