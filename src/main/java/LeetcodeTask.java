@@ -5,16 +5,17 @@ public class LeetcodeTask {
     }
 
 
-    public int fib(int n) {
-        int num1=0;
+    public int climbStairs(int n) {
+        int num1=1;
         int num2=1;
-        int fibonacci=1;
-        for (int i=1;i<n;i++){
-            fibonacci=num1+num2;
+        int result=2;
+        if (n==1) return 1;
+        for (int i = 1; i < n; i++) {
+            result=num1+num2;
             num1=num2;
-            num2=fibonacci;
+            num2=result;
         }
-        return fibonacci;
+        return result;
     }
 }
 class TreeNode {
