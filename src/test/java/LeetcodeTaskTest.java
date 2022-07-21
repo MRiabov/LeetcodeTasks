@@ -9,7 +9,7 @@ class LeetcodeTaskTest {
 
     @Test
     void twoSum() {
-        assertEquals(new int[]{0,1},leetcodeTask.twoSum(new int[]{2,7,11,15},9));
+        assertEquals(new int[]{0,1},leetcodeTask.twoSum(new int[]{3,3},6));
 
     }
 }
