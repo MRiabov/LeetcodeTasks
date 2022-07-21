@@ -7,14 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class LeetcodeTaskTest {
     LeetcodeTask leetcodeTask = new LeetcodeTask();
 
-
-
-
     @Test
-    void findAnagrams() {
-        ArrayList<Integer> result = new ArrayList<>();
-        result.add(0);
-        result.add(6);
-        assertEquals(result, leetcodeTask.findAnagrams("cbaebabacd","abc"));
+    void twoSum() {
+        assertEquals(new int[]{0,1},leetcodeTask.twoSum(new int[]{2,7,11,15},9));
+
     }
 }
