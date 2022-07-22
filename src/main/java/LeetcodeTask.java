@@ -12,13 +12,25 @@ public class LeetcodeTask {
 //        char[] guessChar = guess.toCharArray();
 
     public String decodeString(String s) {
-        StringBuilder stringBuilder= new StringBuilder();
-        boolean nextLayer=true;
+        StringBuilder stringBuilder = new StringBuilder()//needs to be used in midResult
+        String midResult;//internal result, stated every while loop
+        boolean nextLayer = true; //is
         int amountOfRepeat;
-            for (int i = 0; i < ; i++) {
+        while (nextLayer) {
+            nextLayer = false;
+            boolean lookup = false;
+            for (int i = 0; i <; i++) {
+                if (!lookup) {
+                    if (s.charAt(i) == '[') {
+                        amountOfRepeat = s.charAt(i - 1);
+                        lookup = true;
+                    }
+                } else
 
             }
-            if (s.charAt(i)=='[')  amountOfRepeat=s.charAt(i-1);
+            for (int i = 0; i < amountOfRepeat; i++) {
+                stringBuilder.append()
+            }
 
         }
     }
