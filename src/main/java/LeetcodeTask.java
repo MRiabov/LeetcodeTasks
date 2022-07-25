@@ -1,40 +1,20 @@
-import java.lang.reflect.Array;
-
 public class LeetcodeTask {
 
-
-    public int[] findBall(int[][] grid) {
-        int[] result = new int[grid[0].length];
-
-        for (int currentBall = 0; currentBall < grid[0].length; currentBall++) {
-            int posX = currentBall;
-            for (int[] currentLevel : grid) {
-                if (currentLevel[posX] == 1) {
-                    if (posX + 1 != grid[0].length && currentLevel[posX + 1] == 1) posX++;
-                    else {
-                        return -1;
-                    }
-                } else if (posX - 1 != -1 && currentLevel[posX - 1] == -1) posX--;
-                else return -1;
+    public String longestCommonPrefix(String[] strs) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String min = strs[0];
+        for (String word : strs)
+            if (!word.startsWith(min)) {
+                for (int i = 0; i < Math.min(word.length(), min.length()); i++)
+                    if (word.charAt(i) == min.charAt(i))
+                        stringBuilder.append(min.charAt(i));
+                    else break;
+                min = stringBuilder.toString();
+                stringBuilder.setLength(0);
             }
-            return posX;
-        }
-        return result;
+        return min;
     }
 
-    private int calculateBall(int[][] grid, int currentBall) {
-        int posX = currentBall;
-        for (int[] currentLevel : grid) {
-            if (currentLevel[posX] == 1) {
-                if (posX + 1 != grid[0].length && currentLevel[posX + 1] == 1) posX++;
-                else {
-                    return -1;
-                }
-            } else if (posX - 1 != -1 && currentLevel[posX - 1] == -1) posX--;
-            else return -1;
-        }
-        return posX;
-    }
 }
 
 

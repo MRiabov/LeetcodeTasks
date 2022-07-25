@@ -9,7 +9,7 @@ class LeetcodeTaskTest {
     LeetcodeTask leetcodeTask = new LeetcodeTask();
 
     @Test
-    void spiralOrder() {
-        assertEquals(,leetcodeTask.spiralOrder(new int[][]{{11,12,13},{21,22,23},{31,32,33}}));
+    void longestCommonPrefix() {
+        leetcodeTask.longestCommonPrefix(new String[]{"flower","flow","flight"});
     }
 }
