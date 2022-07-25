@@ -1,29 +1,28 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class LeetcodeTask {
 
-    public String longestCommonPrefix(String[] strs) {
-        StringBuilder stringBuilder = new StringBuilder();
-        String min = strs[0];
-        for (String word : strs)
-            if (!word.startsWith(min)) {
-                for (int i = 0; i < Math.min(word.length(), min.length()); i++)
-                    if (word.charAt(i) == min.charAt(i))
-                        stringBuilder.append(min.charAt(i));
-                    else break;
-                min = stringBuilder.toString();
-                stringBuilder.setLength(0);
+    public String multiply(String num1, String num2) {
+        ArrayList<Integer> digits=new ArrayList<>(num1.length()+num2.length());
+        Collections.fill(digits,0);
+        StringBuilder stringBuilder=new StringBuilder();
+        for (int i=0;i<num1.length();i++)
+            for (int j=0,offset=0;j<num2.length();j++,offset=i+j){
+                digits.set(offset,digits.get(offset)+Character.getNumericValue(num1.charAt(i))*Character.getNumericValue(num1.charAt(j)));
             }
-        return min;
-    }
+        int addToNext=0;
+        int currentPos=0;
+        for (int digit:digits){
+            digits.set(currentPos,(digit+addToNext)%10);
+            stringBuilder.append((digit+addToNext)%10);
+            addToNext=(digit+addToNext)/10;
+            currentPos++;
+        }
 
+
+        return stringBuilder.reverse().toString();
+    }
 }
 
 
-// for (int y = 0; y < grid.length; y++) {
-//            for (int x = 0; x < grid[0].length; x++) {
-//                if (grid[y][x]==1){
-//                    if (x+1!=grid[0].length&&grid[y][x+1]==1)
-//                } else {
-//
-//                }
-//            }
-//        }
