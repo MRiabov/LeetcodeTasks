@@ -9,7 +9,7 @@ class LeetcodeTaskTest {
     LeetcodeTask leetcodeTask = new LeetcodeTask();
 
     @Test
-    void longestCommonPrefix() {
-        leetcodeTask.longestCommonPrefix(new String[]{"flower","flow","flight"});
+    void multiply() {
+        leetcodeTask.multiply("123","456");
     }
 }
