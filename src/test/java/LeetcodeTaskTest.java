@@ -9,7 +9,8 @@ class LeetcodeTaskTest {
     LeetcodeTask leetcodeTask = new LeetcodeTask();
 
     @Test
-    void multiply() {
-        leetcodeTask.multiply("123","456");
+    void removeNthFromEnd() {
+        leetcodeTask.isPalindrome(new ListNode(1,new ListNode(2,new ListNode(2,new ListNode(1,null)))));
     }
+
 }
