@@ -3,15 +3,19 @@ import java.util.Collections;
 
 public class LeetcodeTask {
 
-    public boolean isPalindrome(ListNode head) {
-        ArrayList<Integer> values = new ArrayList<>();
-        while (head != null) {
-            values.add(head.val);
-            head = head.next;
+    public class Solution {
+        public ListNode oddEvenList(ListNode head) {
+            if (head == null) return null;
+            ListNode odd = head, even = head.next, evenHead = even;
+            while (even != null && even.next != null) {
+                odd.next = even.next;
+                odd = odd.next;
+                even.next = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead;
+            return head;
         }
-        for (int i = 0; i < values.size() / 2; i++)
-            if (values.get(i) != values.get(values.size() - i - 1)) return false;
-        return true;
     }
 }
 
