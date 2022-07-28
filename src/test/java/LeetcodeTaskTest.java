@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LeetcodeTaskTest {
     LeetcodeTask leetcodeTask = new LeetcodeTask();
 
-    @Test
-    void removeNthFromEnd() {
-        leetcodeTask.isPalindrome(new ListNode(1,new ListNode(2,new ListNode(2,new ListNode(1,null)))));
-    }
 
+    @Test
+    void longestPalindrome() {
+        leetcodeTask.longestPalindrome(new String[]{"em","pe","mp","ee","pp","me","ep","em","em","me"});
+    }
 }
