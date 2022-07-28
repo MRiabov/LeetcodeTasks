@@ -7,8 +7,9 @@ public class LeetcodeTask {
 
 
     public int longestPalindrome(String[] words) {
-        HashSet<String> values = new HashSet<>(Arrays.asList(words));
-
+        for (String word : words) {
+            if word.get
+        }
 
     }
 }
