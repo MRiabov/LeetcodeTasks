@@ -4,29 +4,33 @@ import java.util.Collections;
 import java.util.HashSet;
 
 public class LeetcodeTask {
+    private int min=Integer.MAX_VALUE;
+    private int max=0;
 
+    public boolean isBalanced(TreeNode root) {
+        return recursiveIsBalanced(root,0);
+    }
 
-    public int longestPalindrome(String[] words) {
-        for (String word : words) {
-            if word.get
+    private boolean recursiveIsBalanced(TreeNode root, int depth){
+        if (root==null) {
+            if (max<depth) max=depth;
+            if (min>depth) min=depth;
+            return max - min < 1;
         }
 
+        return recursiveIsBalanced(root.left,depth+1)&&recursiveIsBalanced(root.right,depth+1);
     }
 }
 
-class ListNode {
+class TreeNode {
     int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
+        this.left = left;
+        this.right = right;
     }
 }
