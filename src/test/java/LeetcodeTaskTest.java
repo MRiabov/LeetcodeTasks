@@ -11,6 +11,8 @@ class LeetcodeTaskTest {
 
     @Test
     void longestPalindrome() {
-        leetcodeTask.longestPalindrome(new String[]{"em","pe","mp","ee","pp","me","ep","em","em","me"});
+        assertTrue(leetcodeTask.isBalanced(new TreeNode(3,
+                new TreeNode(9),new TreeNode(20,
+                        new TreeNode(15),new TreeNode(7)))));
     }
 }
