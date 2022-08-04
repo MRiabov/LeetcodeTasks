@@ -4,21 +4,17 @@ import java.util.Collections;
 import java.util.HashSet;
 
 public class LeetcodeTask {
-    private int min=Integer.MAX_VALUE;
-    private int max=0;
-
-    public boolean isBalanced(TreeNode root) {
-        return recursiveIsBalanced(root,0);
+    int max=0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        dfs(root);
+        return max;
     }
-
-    private boolean recursiveIsBalanced(TreeNode root, int depth){
-        if (root==null) {
-            if (max<depth) max=depth;
-            if (min>depth) min=depth;
-            return max - min < 1;
-        }
-
-        return recursiveIsBalanced(root.left,depth+1)&&recursiveIsBalanced(root.right,depth+1);
+    private int dfs(TreeNode currentNode){
+        if (currentNode==null) return 0;
+        int left=dfs(currentNode.left);
+        int right=dfs(currentNode.right);
+        max=Math.max(max,left+right);
+        return Math.max(left,right)+1;
     }
 }
 
