@@ -1,0 +1,1 @@
+SELECT employee_id FROM Salaries WHERE
